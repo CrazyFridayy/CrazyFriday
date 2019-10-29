@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+<div id="app">
+
+    <input type="button" value="浪起来" v-on:click="lang">
+    <input type="button" value="低调">
+
+    <br>
+
+    {{msg}}
+
+</div>
+
+<script src="node_modules/vue/dist/vue.js"></script>
+
+<script>
+
+   var vm = new Vue({
+       el: "#app",//element 告诉vue现在要控制的区域
+       // template:"<h1>我是H1</h1>",
+       data:{
+           msg:"我们是86期，我们有3年工作经验~~~"
+       },
+       methods:{
+           lang:function () {
+               //我们是86期，我们有3年工作经验~~~
+               //们是86期，我们有3年工作经验~~~我
+               //是86期，我们有3年工作经验~~~我们
+               //86期，我们有3年工作经验~~~我们是
+
+               setInterval( () => {
+                   var startStr =  this.msg.substring(0,1);
+                   var endStr =  this.msg.substring(1);
+                   this.msg =  endStr + startStr;
+               },400)
+
+
+           }
+       }
+   });
+
+
+</script>
+</body>
+</html>
